@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:padding="@dimen/size_16dp"
+    tools:context=".presentation.ui.home.HomeFragment"
+    tools:ignore="ContentDescription">
+
+    <com.tunc.androidpoetryapp.customviews.ClassicTextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_8dp"
+        android:layout_marginTop="@dimen/size_16dp"
+        android:text="En çok beğenilenler"
+        android:textSize="@dimen/text_size_11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/text1">
+
+        <include
+            layout="@layout/circle_user_image"
+            android:layout_width="@dimen/size_64dp"
+            android:layout_height="@dimen/size_64dp"
+            android:layout_marginEnd="10dp" />
+
+        <include
+            layout="@layout/circle_user_image"
+            android:layout_width="@dimen/size_64dp"
+            android:layout_height="@dimen/size_64dp"
+            android:layout_marginEnd="10dp" />
+
+        <include
+            layout="@layout/circle_user_image"
+            android:layout_width="@dimen/size_64dp"
+            android:layout_height="@dimen/size_64dp"
+            android:layout_marginEnd="10dp" />
+
+        <include
+            layout="@layout/circle_user_image"
+            android:layout_width="@dimen/size_64dp"
+            android:layout_height="@dimen/size_64dp"
+            android:layout_marginEnd="10dp" />
+
+        <include
+            layout="@layout/circle_user_image"
+            android:layout_width="@dimen/size_64dp"
+            android:layout_height="@dimen/size_64dp"
+            android:layout_marginEnd="10dp" />
+
+        <include
+            layout="@layout/circle_user_image"
+            android:layout_width="@dimen/size_64dp"
+            android:layout_height="@dimen/size_64dp"
+            android:layout_marginEnd="10dp" />
+
+    </LinearLayout>
+
+    <com.tunc.androidpoetryapp.customviews.ClassicTextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_24dp"
+        android:text="Gönderiler"
+        android:textSize="@dimen/text_size_11sp"
+        app:layout_constraintStart_toStartOf="@+id/text1"
+        app:layout_constraintTop_toBottomOf="@+id/linear" />
+
+
+    <include
+        android:id="@+id/homeTab"
+        layout="@layout/tablayout_with_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/text2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

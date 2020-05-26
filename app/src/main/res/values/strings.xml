@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">AndroidPoetryApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="field_name">Ad</string>
+    <string name="field_surname">Soyad</string>
+    <string name="field_email">Email</string>
+    <string name="field_password">Şifre</string>
+    <string name="field_confirm_password">Şifre tekrar</string>
+
+
+    <string name="button_login">GİRİŞ YAP</string>
+    <string name="button_signup">KAYIT OL</string>
+
+
+    <string name="warning_empty_login_email">Mail adresi boş geçilemez</string>
+    <string name="warning_empty_login_password">Şifre boş geçilemez</string>
+
+    <string name="label_posts">Paylaşımlar</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/button"
+    android:layout_width="40dp"
+    android:layout_height="40dp">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/buttonImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="false"
+        android:src="@drawable/ic_like"
+        android:tint="@color/light_black" />
+
+</FrameLayout>

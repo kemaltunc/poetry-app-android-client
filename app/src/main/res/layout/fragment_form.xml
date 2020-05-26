@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        tools:context=".presentation.ui.login_signup.FormFragment">
+
+        <LinearLayout
+            android:id="@+id/name_surname_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:weightSum="2"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.tunc.androidpoetryapp.customviews.PoetryAppEditText
+                android:id="@+id/name_ed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:inputType="text"
+                android:layout_weight="1"
+                android:hint="@string/field_name"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.tunc.androidpoetryapp.customviews.PoetryAppEditText
+                android:id="@+id/surname_ed"
+                android:inputType="text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:hint="@string/field_surname"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <com.tunc.androidpoetryapp.customviews.PoetryAppEditText
+            android:id="@+id/email_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/field_email"
+            app:layout_constraintTop_toBottomOf="@+id/name_surname_container" />
+
+        <com.tunc.androidpoetryapp.customviews.PoetryAppEditText
+            android:id="@+id/password_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/field_password"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@+id/email_ed" />
+
+
+        <com.tunc.androidpoetryapp.customviews.PoetryAppEditText
+            android:id="@+id/confirm_password_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/field_confirm_password"
+            android:visibility="gone"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@+id/password_ed" />
+
+        <com.tunc.androidpoetryapp.customviews.LoadingButton
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/confirm_password_ed" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

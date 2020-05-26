@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PoetryAppEditText">
+        <attr name="android:hint" format="string" />
+        <attr name="hintTextColor" format="color" />
+        <attr name="android:textColor" format="color" />
+        <attr name="android:inputType" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="LoadingButton">
+        <attr name="android:text" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="LikeButton">
+        <attr name="img" format="reference" />
+    </declare-styleable>
+</resources>
