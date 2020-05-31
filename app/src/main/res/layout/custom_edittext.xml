@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:layout_marginTop="10dp"
-    android:inputType="phone"
+    android:inputType="text"
     android:background="@drawable/border_edittext"
     android:textColor="@color/light_black"
     android:textColorHint="@color/dark_grey"

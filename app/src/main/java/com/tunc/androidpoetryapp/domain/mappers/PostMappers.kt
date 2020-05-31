@@ -8,5 +8,8 @@ fun PostResponseItem.toPost() = Post(
     title = this.title,
     content = this.content,
     createdAt = this.createdAt,
-    user = this.user?.toUser()
+    user = this.user?.toUser(),
+    isLiked = this.isLike,
+    likeCount = this.likeCount,
+    isFavorite = this.isFavorite
 )

@@ -10,8 +10,4 @@
     <declare-styleable name="LoadingButton">
         <attr name="android:text" format="string" />
     </declare-styleable>
-
-    <declare-styleable name="LikeButton">
-        <attr name="img" format="reference" />
-    </declare-styleable>
 </resources>

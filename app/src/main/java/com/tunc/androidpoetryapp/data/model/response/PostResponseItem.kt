@@ -10,11 +10,14 @@ data class PostResponseItem(
     @Json(name = "content")
     var content: String?,
     @Json(name = "_id")
-    var _id: String?,
+    var _id: String,
     @Json(name = "title")
     var title: String?,
     @Json(name = "updatedAt")
     var updatedAt: String?,
     @Json(name = "user")
-    var user: UserResponse?
+    var user: UserResponse?,
+    var isLike: Boolean,
+    var likeCount: Int,
+    var isFavorite: Boolean
 )

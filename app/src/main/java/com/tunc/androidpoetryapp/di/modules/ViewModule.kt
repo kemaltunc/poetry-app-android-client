@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.tunc.androidpoetryapp.di.ViewModelFactory
 import com.tunc.androidpoetryapp.di.ViewModelKey
+import com.tunc.androidpoetryapp.presentation.ui.create_post.CreatePostViewModel
 import com.tunc.androidpoetryapp.presentation.ui.home.HomeViewModel
 import com.tunc.androidpoetryapp.presentation.ui.login_signup.FormViewModel
 import com.tunc.androidpoetryapp.presentation.ui.login_signup.LoginSignupViewModel
@@ -60,4 +61,9 @@ abstract class ViewModule {
     @IntoMap
     @ViewModelKey(PostViewModel::class)
     internal abstract fun postViewModel(viewModel: PostViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CreatePostViewModel::class)
+    internal abstract fun createPostViewModel(viewModel: CreatePostViewModel): ViewModel
 }

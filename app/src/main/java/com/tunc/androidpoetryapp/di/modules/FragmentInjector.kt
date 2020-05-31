@@ -1,5 +1,6 @@
 package com.tunc.androidpoetryapp.di.modules
 
+import com.tunc.androidpoetryapp.presentation.ui.create_post.CreatePostFragment
 import com.tunc.androidpoetryapp.presentation.ui.home.HomeFragment
 import com.tunc.androidpoetryapp.presentation.ui.login_signup.FormFragment
 import com.tunc.androidpoetryapp.presentation.ui.login_signup.LoginSignupFragment
@@ -34,5 +35,8 @@ abstract class FragmentInjector {
 
     @ContributesAndroidInjector
     abstract fun postFragmentInjector(): PostFragment
+
+    @ContributesAndroidInjector
+    abstract fun createPostInjector(): CreatePostFragment
 
 }

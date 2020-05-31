@@ -1,133 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:elevation="2dp"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="2dp"
-    app:cardUseCompatPadding="true"
-    app:rippleColor="@color/transparent">
+<layout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="data"
+            type="com.tunc.androidpoetryapp.domain.entity.Post" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp">
-
-        <include
-            android:id="@+id/userImageLayout"
-            layout="@layout/circle_user_image"
-            android:layout_width="@dimen/size_64dp"
-            android:layout_height="@dimen/size_64dp" />
-
-
-        <com.tunc.androidpoetryapp.customviews.ClassicTextView
-            android:id="@+id/userName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size_8dp"
-            android:layout_marginTop="5dp"
-            android:text="Kemal TUNÇ"
-            android:textSize="@dimen/text_size_15sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/userImageLayout"
-            app:layout_constraintTop_toTopOf="@+id/userImageLayout" />
-
-        <com.tunc.androidpoetryapp.customviews.ClassicTextView
-            android:id="@+id/postDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="22:04"
-            android:textSize="@dimen/text_size_14sp"
-            app:layout_constraintStart_toStartOf="@+id/userName"
-            app:layout_constraintTop_toBottomOf="@+id/userName" />
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_more_horiz"
-            android:tint="@color/light_black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/userImageLayout" />
-
-        <com.tunc.androidpoetryapp.customviews.ClassicTextView
-            android:id="@+id/postTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="@dimen/size_16dp"
-            android:text="İŞTE GİDİYORUM..."
-            android:textSize="@dimen/text_size_18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/userImageLayout"
-            app:layout_constraintTop_toBottomOf="@+id/userImageLayout" />
-
-        <com.tunc.androidpoetryapp.customviews.ClassicTextView
-            android:id="@+id/postContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_8dp"
-            android:text="Sensin beni en onulmaz yerimden vuran,
-Fakat sensin yine boş ömrü dolduran…"
-            app:layout_constraintStart_toStartOf="@+id/postTitle"
-            app:layout_constraintTop_toBottomOf="@+id/postTitle" />
-
-
-        <View
-            android:id="@+id/line1"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="10dp"
-            android:background="@color/dark_grey"
-            app:layout_constraintTop_toBottomOf="@+id/postContent" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:elevation="2dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="2dp"
+        app:cardUseCompatPadding="true"
+        app:rippleColor="@color/transparent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            app:layout_constraintTop_toBottomOf="@+id/line1">
+            android:layout_height="match_parent"
+            android:padding="10dp">
 
-            <com.tunc.androidpoetryapp.customviews.LikeButton
-                android:id="@+id/likeButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <include
+                android:id="@+id/userImageLayout"
+                layout="@layout/circle_user_image"
+                android:layout_width="@dimen/size_64dp"
+                android:layout_height="@dimen/size_64dp" />
 
-            <com.tunc.androidpoetryapp.customviews.LikeButton
-                android:id="@+id/commentButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+
+            <com.tunc.androidpoetryapp.customviews.ClassicTextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/size_8dp"
-                app:img="@drawable/ic_chat"
-                app:layout_constraintStart_toEndOf="@+id/likeButton"
-                app:layout_constraintTop_toTopOf="@+id/likeButton" />
+                android:layout_marginTop="5dp"
+                android:text="@{data.user.name + data.user.surname}"
+                android:textSize="@dimen/text_size_15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/userImageLayout"
+                app:layout_constraintTop_toTopOf="@+id/userImageLayout" />
 
-            <com.tunc.androidpoetryapp.customviews.LikeButton
-                android:id="@+id/shareButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="@dimen/size_8dp"
-                app:img="@drawable/ic_share"
-                app:layout_constraintStart_toEndOf="@+id/commentButton"
-                app:layout_constraintTop_toTopOf="@+id/likeButton" />
+            <com.tunc.androidpoetryapp.customviews.ClassicTextView
+                android:id="@+id/postDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@{data.createdAt}"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintStart_toStartOf="@+id/userName"
+                app:layout_constraintTop_toBottomOf="@+id/userName" />
 
-            <com.tunc.androidpoetryapp.customviews.LikeButton
-                android:id="@+id/favoriteButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:img="@drawable/ic_bookmork"
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_more_horiz"
+                android:tint="@color/light_black"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/likeButton" />
+                app:layout_constraintTop_toTopOf="@+id/userImageLayout" />
+
+            <com.tunc.androidpoetryapp.customviews.ClassicTextView
+                android:id="@+id/postTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="@dimen/size_16dp"
+                android:text="@{data.title}"
+                android:textSize="@dimen/text_size_18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/userImageLayout"
+                app:layout_constraintTop_toBottomOf="@+id/userImageLayout" />
+
+            <com.tunc.androidpoetryapp.customviews.ClassicTextView
+                android:id="@+id/postContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_8dp"
+                android:text="@{data.content}"
+                app:layout_constraintStart_toStartOf="@+id/postTitle"
+                app:layout_constraintTop_toBottomOf="@+id/postTitle" />
+
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:background="@color/dark_grey"
+                app:layout_constraintTop_toBottomOf="@+id/postContent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@+id/line1">
+
+                <com.tunc.androidpoetryapp.customviews.LikeButton
+                    android:id="@+id/likeButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/grey"
+                    app:count="@{data.likeCount}"
+                    app:img="@{data.liked ? @drawable/ic_like : @drawable/ic_unlike}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.tunc.androidpoetryapp.customviews.LikeButton
+                    android:id="@+id/commentButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="@dimen/size_8dp"
+                    app:img="@{@drawable/ic_chat}"
+                    app:layout_constraintStart_toEndOf="@+id/likeButton"
+                    app:layout_constraintTop_toTopOf="@+id/likeButton" />
+
+                <com.tunc.androidpoetryapp.customviews.LikeButton
+                    android:id="@+id/shareButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="@dimen/size_8dp"
+                    app:img="@{@drawable/ic_share}"
+                    app:layout_constraintStart_toEndOf="@+id/commentButton"
+                    app:layout_constraintTop_toTopOf="@+id/likeButton" />
+
+                <com.tunc.androidpoetryapp.customviews.LikeButton
+                    android:id="@+id/favoriteButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:img="@{data.favorite ? @drawable/ic_bookmork : @drawable/ic_unbookmark}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/likeButton" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</com.google.android.material.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

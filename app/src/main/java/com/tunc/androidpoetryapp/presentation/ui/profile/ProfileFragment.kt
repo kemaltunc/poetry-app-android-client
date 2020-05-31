@@ -1,17 +1,23 @@
 package com.tunc.androidpoetryapp.presentation.ui.profile
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.tunc.androidpoetryapp.R
 import com.tunc.androidpoetryapp.base.BaseFragment
 import com.tunc.androidpoetryapp.base.BaseTabsPagerAdapter
-import com.tunc.androidpoetryapp.customviews.controller
 import com.tunc.androidpoetryapp.databinding.FragmentProfileBinding
 import com.tunc.androidpoetryapp.presentation.ui.post.PostFragment
 import com.tunc.androidpoetryapp.util.extension.init
+import com.tunc.androidpoetryapp.util.extension.safeController
+import kotlinx.android.synthetic.main.tablayout_with_viewpager.view.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding>() {
+
+    override val layoutRes: Int = R.layout.fragment_profile
 
     override val classViewModel: Class<ProfileViewModel> = ProfileViewModel::class.java
 
@@ -22,14 +28,12 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding>()
         )
     }
 
-    override fun setBinding() {
-        binding = FragmentProfileBinding.inflate(layoutInflater)
-    }
+
 
     override fun clickListeners() {
 
         binding.backButton.setOnClickListener {
-            controller.navigateUp()
+            safeController()?.navigateUp()
         }
 
     }

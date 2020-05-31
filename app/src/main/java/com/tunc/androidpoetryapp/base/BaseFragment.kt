@@ -7,23 +7,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.viewbinding.ViewBinding
 import com.tunc.androidpoetryapp.util.Loading
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
 
-abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding> : DaggerFragment() {
+abstract class BaseFragment<VM : BaseViewModel, VB : ViewDataBinding> : DaggerFragment() {
 
-    lateinit var viewModel: VM
 
+    @get:LayoutRes
+    protected abstract val layoutRes: Int
     protected abstract val classViewModel: Class<VM>
 
 
-    var baseActivity: BaseActivity<*>? = null
+    lateinit var viewModel: VM
+
+    private var baseActivity: BaseActivity<*>? = null
 
     private lateinit var uiLock: Dialog
 
@@ -46,13 +51,14 @@ abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding> : DaggerFragme
         savedInstanceState: Bundle?
     ): View? {
         if (!this::binding.isInitialized) {
-            setBinding()
+            binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
+            binding.lifecycleOwner = viewLifecycleOwner
         }
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
         if (!createPage) {
             createPage = true
@@ -100,19 +106,7 @@ abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding> : DaggerFragme
         }
     }
 
-    override fun onDetach() {
-        val parent = view?.parent as? ViewGroup
-        parent?.removeAllViews()
-        super.onDetach()
-    }
 
-    override fun onDestroyView() {
-        val parent = view?.parent as? ViewGroup
-        parent?.removeAllViews()
-        super.onDestroyView()
-    }
-
-    open fun setBinding() {}
     open fun initUI() {}
     open fun subscribeObservers() {}
     open fun clickListeners() {}

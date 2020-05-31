@@ -24,6 +24,10 @@
         <item name="colorAccent">@color/white</item>
     </style>
 
+    <style name="ContentLoadingProgressBlack">
+        <item name="colorAccent">@color/light_black</item>
+    </style>
+
     <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabTextAppearance">@style/MyCustomTextAppearance</item>
     </style>

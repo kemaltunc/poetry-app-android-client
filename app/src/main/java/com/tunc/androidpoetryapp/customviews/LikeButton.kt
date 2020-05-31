@@ -1,11 +1,15 @@
 package com.tunc.androidpoetryapp.customviews
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import com.tunc.androidpoetryapp.R
 import com.tunc.androidpoetryapp.databinding.CellLikeButtonBinding
+
 
 class LikeButton @JvmOverloads constructor(
     context: Context,
@@ -16,16 +20,19 @@ class LikeButton @JvmOverloads constructor(
     var binding: CellLikeButtonBinding =
         CellLikeButtonBinding.inflate(LayoutInflater.from(context), this, true)
 
-    init {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LikeButton)
-        with(typedArray) {
-            val imageId = getResourceId(R.styleable.LikeButton_img, R.drawable.ic_like)
-            binding.buttonImage.run {
-                setImageResource(imageId)
-            }
-            recycle()
-        }
+    fun setImg(drawable: Drawable?) {
+        binding.buttonImage.setImageDrawable(drawable)
     }
 
 
+    fun setCount(count: Int) {
+        binding.countTv.text = count.toString()
+
+        if (count > 0) {
+            binding.countTv.visibility = View.VISIBLE
+        } else {
+            binding.countTv.visibility = View.GONE
+        }
+
+    }
 }

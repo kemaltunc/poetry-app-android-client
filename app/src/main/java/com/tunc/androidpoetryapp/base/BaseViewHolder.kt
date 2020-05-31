@@ -1,15 +1,19 @@
 package com.tunc.androidpoetryapp.base
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 
-abstract class BaseViewHolder<M : Any> : RecyclerView.ViewHolder, LayoutContainer {
+abstract class BaseViewHolder<Data : BaseEntity, V : ViewDataBinding> : RecyclerView.ViewHolder,
+    LayoutContainer {
 
-    var onViewClick: ((M, View) -> Unit) = { _, _ -> }
+    var onViewClick: ((Data, View) -> Unit) = { _, _ -> }
 
     constructor(parent: ViewGroup, @LayoutRes layoutId: Int) : this(
         LayoutInflater.from(parent.context).inflate(
@@ -20,26 +24,27 @@ abstract class BaseViewHolder<M : Any> : RecyclerView.ViewHolder, LayoutContaine
 
     )
 
-
     constructor(itemView: View) : super(itemView)
 
     override val containerView: View?
         get() = this.itemView
 
 
-    abstract fun bind(item: M)
+    val context: Context
+        get() = this.itemView.context
 
-    internal fun bindItem(item: M, onItemClick: (M) -> Unit) {
+
+    abstract fun bind(item: Data, binding: V)
+
+    internal fun bindItem(item: Data, onItemClick: (Data) -> Unit) {
         with(itemView) {
             setOnClickListener { onItemClick(item) }
-            bind(item)
+            DataBindingUtil.bind<V>(itemView)?.let { bind(item, it) }
         }
-
     }
 
-    internal fun setOnViewClick(onViewClick: ((M, View) -> Unit)): BaseViewHolder<M> {
+    internal fun setOnViewClick(onViewClick: ((Data, View) -> Unit)): BaseViewHolder<Data, *> {
         this.onViewClick = onViewClick
         return this
     }
-
 }

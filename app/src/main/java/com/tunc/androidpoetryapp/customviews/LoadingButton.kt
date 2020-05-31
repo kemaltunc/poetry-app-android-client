@@ -43,6 +43,7 @@ class LoadingButton @JvmOverloads constructor(
 
     fun setOnClick(click: () -> Unit) {
         loading_material.setOnClickListener {
+            showProgress()
             click()
         }
     }

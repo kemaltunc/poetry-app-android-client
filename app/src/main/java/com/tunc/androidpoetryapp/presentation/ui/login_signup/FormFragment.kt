@@ -1,31 +1,28 @@
 package com.tunc.androidpoetryapp.presentation.ui.login_signup
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.fragment.app.Fragment
+import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.tunc.androidpoetryapp.R
 import com.tunc.androidpoetryapp.base.BaseFragment
-import com.tunc.androidpoetryapp.customviews.controller
 import com.tunc.androidpoetryapp.data.model.request.LoginRequest
 import com.tunc.androidpoetryapp.databinding.FragmentFormBinding
-import com.tunc.androidpoetryapp.presentation.ui.tab.TabFragment
 import com.tunc.androidpoetryapp.util.BundleConstants
 import com.tunc.androidpoetryapp.util.enums.LoginType
+import com.tunc.androidpoetryapp.util.extension.safeController
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class FormFragment : BaseFragment<FormViewModel, FragmentFormBinding>() {
 
+    override val layoutRes: Int = R.layout.fragment_form
     override val classViewModel: Class<FormViewModel> = FormViewModel::class.java
 
 
     lateinit var type: LoginType
 
-    override fun setBinding() {
-        binding = FragmentFormBinding.inflate(layoutInflater)
-    }
+
 
     override fun initUI() {
         arguments?.let {
@@ -41,7 +38,7 @@ class FormFragment : BaseFragment<FormViewModel, FragmentFormBinding>() {
 
     override fun subscribeObservers() {
         viewModel.user.observe(viewLifecycleOwner, Observer {
-            controller.navigate(TabFragment.newInstance(), noHistory = true)
+            safeController()?.navigate(R.id.action_formFragment_to_tabFragment)
         })
         viewModel.requestEnd.observe(viewLifecycleOwner, Observer { hideLoading() })
     }

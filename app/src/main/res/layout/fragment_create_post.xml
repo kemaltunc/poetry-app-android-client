@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        tools:context=".presentation.ui.create_post.CreatePostFragment">
+
+        <com.tunc.androidpoetryapp.customviews.ClassicTextView
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Yeni şiir oluştur."
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.tunc.androidpoetryapp.customviews.PoetryAppEditText
+            android:id="@+id/title_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:hint="Şiir başlığı"
+            android:inputType="text"
+            app:layout_constraintTop_toBottomOf="@+id/text1" />
+
+        <com.tunc.androidpoetryapp.customviews.PoetryAppEditText
+            android:id="@+id/description_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Şiir içeriği"
+            android:inputType="textMultiLine"
+            app:layout_constraintTop_toBottomOf="@+id/title_ed"
+            app:line="@{4}" />
+
+        <com.tunc.androidpoetryapp.customviews.LoadingButton
+            android:id="@+id/createButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="PAYLAş"
+            app:layout_constraintTop_toBottomOf="@+id/description_ed" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
